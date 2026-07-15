@@ -16,7 +16,7 @@ An intelligent Machine Learning based web application that predicts whether a cr
 
 ## 📦 Project ZIP File
 **Google Drive:**  
-[https://YOUR-ZIP-FILE-LINK](https://drive.google.com/file/d/1CsQRhlHzBarGlsW3GhsIo2U7XJfyXBuJ/view?usp=sharing)
+https://drive.google.com/file/d/18FrE4PVVeTMlWSsJhYkbPkG3A5tReizl/view?usp=sharing
 ---
 
 # 📖 Project Overview
