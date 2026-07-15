@@ -16,7 +16,8 @@ https://drive.google.com/file/d/1LW5DxaJblYKuypiemjEGQyZxnOPrSySV/view?usp=drive
 
 ## 📦 Project ZIP File
 **Google Drive:**  
-https://drive.google.com/file/d/18FrE4PVVeTMlWSsJhYkbPkG3A5tReizl/view?usp=sharing
+https://drive.google.com/file/d/18FrE4PVVeTMlWSsJhYkbPkG3A5tReizl/view?usp=drive_link
+
 ---
 
 # 📖 Project Overview
