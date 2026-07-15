@@ -160,11 +160,11 @@ This project ships ready to deploy as-is:
 
 | Name | Roll Number | Role |
 |---|---|---|
-| _Add your name_ | _Add roll number_ | Project Leader |
-| _Add your name_ | _Add roll number_ | Machine Learning Developer |
-| _Add your name_ | _Add roll number_ | Backend Developer |
-| _Add your name_ | _Add roll number_ | Frontend Developer |
-| _Add your name_ | _Add roll number_ | Documentation & Testing |
+| __Shaik Asha___ | _Add roll number_ | Project Leader |
+| _Sravanthi Choudaboina_ | _Add roll number_ | Machine Learning Developer |
+| _Yagnesh challa_ | _Add roll number_ | Backend Developer |
+| _Gandham Johnson Paul_ | _Add roll number_ | Frontend Developer |
+| _Akkala Shanmukha Reddy_ | _Add roll number_ | Documentation & Testing |
 
 Update the **Meet Our Team** section in `templates/index.html` with the same
 details.
