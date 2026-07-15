@@ -166,8 +166,7 @@ This project ships ready to deploy as-is:
 | _Gandham Johnson Paul_ | _238X1A4225_ | Frontend Developer |
 | _Akkala Shanmukha Reddy_ | _238X1A4249_ | Documentation & Testing |
 
-Update the **Meet Our Team** section in `templates/index.html` with the same
-details.
+
 
 ---
 
