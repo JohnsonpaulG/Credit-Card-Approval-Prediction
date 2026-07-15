@@ -1,4 +1,4 @@
-# 💳 CredAI – Credit Card Approval Prediction
+# 💳 Credit Card Approval Prediction
 
 An intelligent Machine Learning based web application that predicts whether a credit card application is likely to be **Approved** or **Rejected** using applicant information. The project combines data preprocessing, machine learning, and a modern Flask web interface to simulate a real-world credit approval system.
 
