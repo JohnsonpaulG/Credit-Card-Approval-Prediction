@@ -8,11 +8,11 @@ An intelligent Machine Learning based web application that predicts whether a cr
 
 ## 🌐 Live Web Application
 **Render:**  
-https://YOUR-RENDER-LINK
+[https://YOUR-RENDER-LINK](https://credit-card-approval-prediction-ba1f.onrender.com/)
 
 ## 🎥 Demo Video
 **Google Drive / YouTube:**  
-https://YOUR-DEMO-VIDEO-LINK
+[https://YOUR-DEMO-VIDEO-LINK](https://drive.google.com/file/d/1LW5DxaJblYKuypiemjEGQyZxnOPrSySV/view?usp=drive_link)
 
 ## 📦 Project ZIP File
 **Google Drive:**  
