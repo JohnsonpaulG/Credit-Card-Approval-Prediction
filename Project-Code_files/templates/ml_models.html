@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Models | CreditAI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="page-wrap">
+
+  {% include '_navbar.html' %}
+
+  <header class="page-hero">
+    <span class="kicker">Model Comparison</span>
+    <h1>Four algorithms, <span class="gradient-text">one clear winner</span></h1>
+    <p>
+      Logistic Regression, Decision Tree, Random Forest and XGBoost were each trained on the
+      same historical applicant and repayment data, then evaluated on an identical held-out test set.
+    </p>
+  </header>
+
+  <section class="section reveal" style="padding-top:10px;">
+    <div class="section-narrow">
+
+      <div class="model-tabs">
+        {% for name in model_order %}
+        <button type="button" class="model-tab {{ 'active' if loop.first }}" data-target="panel-{{ loop.index }}">
+          {% if name == production_model %}<span class="prod-dot"></span>{% endif %}{{ name }}
+        </button>
+        {% endfor %}
+      </div>
+
+      {% for name in model_order %}
+      {% set m = metrics[name] %}
+      <div class="model-panel {{ 'active' if loop.first }}" id="panel-{{ loop.index }}">
+
+        {% if name == production_model %}
+        <div class="production-banner">🚀 Production Model — currently powering live predictions on CreditAI</div>
+        {% endif %}
+
+        <div class="glass-card on-dark" style="padding:34px;">
+          <h2 style="font-size:1.4rem; margin-bottom:6px;">{{ name }}</h2>
+          <p style="margin-bottom:26px;">
+            {% if name == 'Random Forest' %}
+              An ensemble of 200 decision trees, each trained on a random subset of applicants and features. Averaging across many trees reduces overfitting and handles the imbalanced approval/rejection split far better than a single tree.
+            {% elif name == 'XGBoost' %}
+              A gradient-boosted tree ensemble that corrects its own errors round by round, with class weighting to compensate for the rarity of rejected applicants. Extremely close to Random Forest in accuracy.
+            {% elif name == 'Decision Tree' %}
+              A single tree, capped at depth 8 to limit overfitting. Easy to interpret, but as a lone tree it captures far less of the pattern in the data than an ensemble.
+            {% else %}
+              A linear baseline model. Fast and fully interpretable, but the relationship between applicant features and approval is not linear enough for this to compete with the tree-based models.
+            {% endif %}
+          </p>
+
+          <div class="metric-grid">
+            <div class="metric-card glass-card on-dark">
+              <div class="metric-value">{{ '%.1f' % (m.accuracy * 100) }}%</div>
+              <div class="metric-label">Accuracy</div>
+            </div>
+            <div class="metric-card glass-card on-dark">
+              <div class="metric-value">{{ '%.1f' % (m.precision * 100) }}%</div>
+              <div class="metric-label">Precision</div>
+            </div>
+            <div class="metric-card glass-card on-dark">
+              <div class="metric-value">{{ '%.1f' % (m.recall * 100) }}%</div>
+              <div class="metric-label">Recall</div>
+            </div>
+            <div class="metric-card glass-card on-dark">
+              <div class="metric-value">{{ '%.1f' % (m.f1 * 100) }}%</div>
+              <div class="metric-label">F1 Score</div>
+            </div>
+            <div class="metric-card glass-card on-dark">
+              <div class="metric-value">{{ '%.1f' % (m.roc_auc * 100) if m.roc_auc is not none else '—' }}{{ '%' if m.roc_auc is not none }}</div>
+              <div class="metric-label">ROC-AUC</div>
+            </div>
+          </div>
+
+          <div class="ml-two-col">
+            <div>
+              <h3 style="font-size:1rem; margin-bottom:6px;">Confusion Matrix</h3>
+              <p style="font-size:0.82rem; margin-bottom:4px;">Held-out test set — {{ metrics._meta.test_size }} applications</p>
+              <div class="confusion-grid">
+                <div class="confusion-cell correct">
+                  <div class="cm-value">{{ m.confusion_matrix[0][0] }}</div>
+                  <div class="cm-label">Actual Approved<br>Predicted Approved</div>
+                </div>
+                <div class="confusion-cell wrong">
+                  <div class="cm-value">{{ m.confusion_matrix[0][1] }}</div>
+                  <div class="cm-label">Actual Approved<br>Predicted Rejected</div>
+                </div>
+                <div class="confusion-cell wrong">
+                  <div class="cm-value">{{ m.confusion_matrix[1][0] }}</div>
+                  <div class="cm-label">Actual Rejected<br>Predicted Approved</div>
+                </div>
+                <div class="confusion-cell correct">
+                  <div class="cm-value">{{ m.confusion_matrix[1][1] }}</div>
+                  <div class="cm-label">Actual Rejected<br>Predicted Rejected</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 style="font-size:1rem; margin-bottom:6px;">Classification Report</h3>
+              <p style="font-size:0.82rem; margin-bottom:4px;">Precision / recall / F1 by class</p>
+              <table class="cr-table">
+                <thead>
+                  <tr><th>Class</th><th>Precision</th><th>Recall</th><th>F1</th><th>Support</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Approved</td>
+                    <td>{{ '%.2f' % m.classification_report.Approved.precision }}</td>
+                    <td>{{ '%.2f' % m.classification_report.Approved.recall }}</td>
+                    <td>{{ '%.2f' % m.classification_report.Approved['f1-score'] }}</td>
+                    <td>{{ m.classification_report.Approved.support | int }}</td>
+                  </tr>
+                  <tr>
+                    <td>Rejected</td>
+                    <td>{{ '%.2f' % m.classification_report.Rejected.precision }}</td>
+                    <td>{{ '%.2f' % m.classification_report.Rejected.recall }}</td>
+                    <td>{{ '%.2f' % m.classification_report.Rejected['f1-score'] }}</td>
+                    <td>{{ m.classification_report.Rejected.support | int }}</td>
+                  </tr>
+                  <tr>
+                    <td>Weighted Avg</td>
+                    <td>{{ '%.2f' % m.classification_report['weighted avg'].precision }}</td>
+                    <td>{{ '%.2f' % m.classification_report['weighted avg'].recall }}</td>
+                    <td>{{ '%.2f' % m.classification_report['weighted avg']['f1-score'] }}</td>
+                    <td>{{ m.classification_report['weighted avg'].support | int }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <h3 style="font-size:1rem; margin-bottom:14px;">Feature Importance</h3>
+          {% set max_imp = m.feature_importance[0][1] if m.feature_importance else 1 %}
+          {% for feat, imp in m.feature_importance %}
+          <div class="importance-bar-row">
+            <span class="fi-label">{{ feature_labels.get(feat, feat) }}</span>
+            <div class="importance-bar-track">
+              <div class="importance-bar-fill" data-width="{{ (imp / max_imp * 100) if max_imp else 0 }}%"></div>
+            </div>
+            <span class="fi-value">{{ '%.3f' % imp }}</span>
+          </div>
+          {% endfor %}
+
+          <div style="margin-top:22px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1);">
+            <h4 style="font-size:0.9rem; margin-bottom:8px; color:var(--gold-light);">Why This Model{{ '' if name == production_model else '?' }}</h4>
+            <p style="font-size:0.88rem;">
+              {% if name == production_model %}
+                Random Forest delivered the best balance of accuracy and robustness on the held-out test set, so it is the model deployed behind every live CreditAI prediction.
+              {% elif name == 'XGBoost' %}
+                A very close second to Random Forest — a strong candidate if training time or incremental updates become a priority.
+              {% elif name == 'Decision Tree' %}
+                Useful as an interpretable baseline, but its single-tree structure underfits the more subtle patterns the ensembles capture.
+              {% else %}
+                Serves as the simplest possible baseline; its lower accuracy here confirms the approval decision is not a linear function of these features.
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </section>
+
+  <section class="section reveal" style="padding-top:0;">
+    <div class="section-narrow">
+      <div class="cta-banner">
+        <div>
+          <h2>See the production model in action</h2>
+          <p>Run a real application through CreditAI's Random Forest classifier.</p>
+        </div>
+        <a href="{{ url_for('prediction') }}" class="btn btn-primary">Start Prediction →</a>
+      </div>
+    </div>
+  </section>
+
+  {% include '_footer.html' %}
+
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

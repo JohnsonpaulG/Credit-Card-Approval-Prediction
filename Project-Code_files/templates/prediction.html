@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply | CreditAI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="form-page">
+
+  {% include '_navbar.html' %}
+
+  <div class="form-header">
+    <span class="kicker">Application Form</span>
+    <h1>Tell us about the applicant</h1>
+    <p>Fill in every field as accurately as possible — the model uses each of these to reach its decision.</p>
+  </div>
+
+  <form class="form-card" action="{{ url_for('predict') }}" method="POST">
+    <div class="form-grid">
+
+      <div class="field full">
+        <label for="applicant_name">Applicant Name</label>
+        <input type="text" id="applicant_name" name="applicant_name" placeholder="e.g. Jordan Smith" required>
+      </div>
+
+      <div class="field">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Select...</option>
+          {% for opt in options.gender %}
+          <option value="{{ opt }}">{{ opt }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="own_car">Own a Car?</label>
+        <select id="own_car" name="own_car" required>
+          <option value="" disabled selected>Select...</option>
+          {% for opt in options.yes_no %}
+          <option value="{{ opt }}">{{ opt }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="own_house">Own a House / Property?</label>
+        <select id="own_house" name="own_house" required>
+          <option value="" disabled selected>Select...</option>
+          {% for opt in options.yes_no %}
+          <option value="{{ opt }}">{{ opt }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="children">Number of Children</label>
+        <input type="number" id="children" name="children" min="0" max="20" placeholder="e.g. 0" required>
+      </div>
+
+      <div class="field">
+        <label for="income">Annual Income (USD)</label>
+        <input type="number" id="income" name="income" min="0" step="0.01" placeholder="e.g. 180000" required>
+      </div>
+
+      <div class="field">
+        <label for="income_type">Income Type</label>
+        <select id="income_type" name="income_type" required>
+          <option value="" disabled selected>Select...</option>
+          {% for opt in options.income_type %}
+          <option value="{{ opt }}">{{ opt }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="education">Education Level</label>
+        <select id="education" name="education" required>
+          <option value="" disabled selected>Select...</option>
+          {% for opt in options.education %}
+          <option value="{{ opt }}">{{ opt }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="family_status">Family Status</label>
+        <select id="family_status" name="family_status" required>
+          <option value="" disabled selected>Select...</option>
+          {% for opt in options.family_status %}
+          <option value="{{ opt }}">{{ opt }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="housing_type">Housing Type</label>
+        <select id="housing_type" name="housing_type" required>
+          <option value="" disabled selected>Select...</option>
+          {% for opt in options.housing_type %}
+          <option value="{{ opt }}">{{ opt }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="occupation">Occupation</label>
+        <select id="occupation" name="occupation" required>
+          <option value="" disabled selected>Select...</option>
+          {% for opt in options.occupation %}
+          <option value="{{ opt }}">{{ opt }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="family_members">Family Members (Total)</label>
+        <input type="number" id="family_members" name="family_members" min="1" max="20" placeholder="e.g. 2" required>
+      </div>
+
+      <div class="field">
+        <label for="age">Age (Years)</label>
+        <input type="number" id="age" name="age" min="18" max="100" placeholder="e.g. 34" required>
+      </div>
+
+      <div class="field full">
+        <label for="years_employed">Years Employed</label>
+        <input type="number" id="years_employed" name="years_employed" min="0" max="60" placeholder="e.g. 5 (enter 0 if not currently employed / retired)" required>
+        <small>Enter 0 if the applicant is a pensioner, student, or currently unemployed.</small>
+      </div>
+
+    </div>
+
+    <div class="form-footer">
+      <span class="secure-note">🔒 Your details are used only to generate this decision and are saved to your prediction history.</span>
+      <button type="submit" class="btn btn-primary">Get My Decision →</button>
+    </div>
+  </form>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

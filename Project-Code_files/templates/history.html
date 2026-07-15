@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History | CreditAI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="page-wrap">
+
+  {% include '_navbar.html' %}
+
+  <header class="page-hero">
+    <span class="kicker">Prediction Log</span>
+    <h1>Every decision, <span class="gradient-text">searchable and exportable</span></h1>
+    <p>Browse, filter and export every prediction CreditAI has made in this deployment.</p>
+  </header>
+
+  <section class="section reveal" style="padding-top:10px;">
+    <div class="section-narrow">
+
+      {% if predictions %}
+      <div class="glass-card on-dark" style="padding:28px 30px;">
+
+        <div class="history-toolbar">
+          <div class="toolbar-left">
+            <input type="text" id="historySearch" placeholder="Search by applicant, occupation, education, housing…">
+            <select id="historyDecisionFilter">
+              <option value="">All Decisions</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+            </select>
+            <select id="historyRiskFilter">
+              <option value="">All Risk Levels</option>
+              <option value="Low Risk">Low Risk</option>
+              <option value="Medium Risk">Medium Risk</option>
+              <option value="High Risk">High Risk</option>
+            </select>
+          </div>
+          <a href="{{ url_for('export_history_csv') }}" class="btn btn-outline" style="padding:11px 20px; font-size:0.85rem;">⬇ Export CSV</a>
+        </div>
+
+        <div class="history-table-wrap">
+          <table class="history-table" id="historyTable">
+            <thead>
+              <tr>
+                <th data-sort="date">Date &amp; Time</th>
+                <th>Applicant</th>
+                <th data-sort="decision">Decision</th>
+                <th data-sort="confidence">Confidence</th>
+                <th data-sort="risk">Risk</th>
+                <th>View Result</th>
+                <th>Download PDF</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for r in predictions %}
+              <tr
+                data-search="{{ (r.occupation ~ ' ' ~ r.education ~ ' ' ~ r.housing_type ~ ' ' ~ r.family_status ~ ' ' ~ r.income_type ~ ' ' ~ (r.applicant_name or '')) | lower }}"
+                data-decision="{{ 'approved' if r.approved else 'rejected' }}"
+                data-risk="{{ r.risk_level }}"
+                data-id="{{ r.id }}"
+                data-date="{{ r.created_at }}"
+                data-confidence="{{ r.probability or 0 }}"
+              >
+                <td>{{ r.created_at | fmt_dt }}</td>
+                <td>{{ r.applicant_name or '—' }}</td>
+                <td>
+                  <span class="badge-decision {{ 'approved' if r.approved else 'rejected' }}">
+                    {{ 'APPROVED' if r.approved else 'REJECTED' }}
+                  </span>
+                </td>
+                <td>{{ '%.1f' % ((r.probability or 0) * 100) }}%</td>
+                <td><span class="badge-risk {{ 'low' if r.risk_level == 'Low Risk' else ('medium' if r.risk_level == 'Medium Risk' else 'high') }}">{{ r.risk_level }}</span></td>
+                <td><a href="{{ url_for('view_result', pred_id=r.id) }}" class="btn-table-action">View</a></td>
+                <td><a href="{{ url_for('download_pdf', pred_id=r.id) }}" class="btn-table-action">⬇ PDF</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="history-pagination" id="historyPagination"></div>
+      </div>
+      {% else %}
+      <div class="glass-card on-dark empty-state">
+        <p>No predictions have been recorded yet. Run the eligibility checker to start building your history.</p>
+        <a href="{{ url_for('prediction') }}" class="btn btn-primary">Start Prediction →</a>
+      </div>
+      {% endif %}
+
+    </div>
+  </section>
+
+  {% include '_footer.html' %}
+
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

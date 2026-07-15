@@ -1,0 +1,336 @@
+{
+  "Logistic Regression": {
+    "accuracy": 0.5702521873391663,
+    "precision": 0.9217202924953257,
+    "recall": 0.5702521873391663,
+    "f1": 0.6897003757704335,
+    "roc_auc": 0.5659366576819407,
+    "confusion_matrix": [
+      [
+        1061,
+        794
+      ],
+      [
+        41,
+        47
+      ]
+    ],
+    "classification_report": {
+      "Approved": {
+        "precision": 0.9627949183303085,
+        "recall": 0.5719676549865229,
+        "f1-score": 0.717619208657423,
+        "support": 1855.0
+      },
+      "Rejected": {
+        "precision": 0.0558858501783591,
+        "recall": 0.5340909090909091,
+        "f1-score": 0.10118406889128095,
+        "support": 88.0
+      },
+      "accuracy": 0.5702521873391663,
+      "macro avg": {
+        "precision": 0.5093403842543338,
+        "recall": 0.5530292820387159,
+        "f1-score": 0.409401638774352,
+        "support": 1943.0
+      },
+      "weighted avg": {
+        "precision": 0.9217202924953257,
+        "recall": 0.5702521873391663,
+        "f1-score": 0.6897003757704335,
+        "support": 1943.0
+      }
+    },
+    "feature_importance": [
+      [
+        "CNT_FAM_MEMBERS",
+        0.3512542158124467
+      ],
+      [
+        "NAME_FAMILY_STATUS",
+        0.254646049342773
+      ],
+      [
+        "FLAG_OWN_REALTY",
+        0.21932930469801057
+      ],
+      [
+        "CNT_CHILDREN",
+        0.19895799589249494
+      ],
+      [
+        "FLAG_OWN_CAR",
+        0.1032581585772522
+      ],
+      [
+        "NAME_EDUCATION_TYPE",
+        0.09197311508163172
+      ],
+      [
+        "YEARS_EMPLOYED",
+        0.08578309257780507
+      ],
+      [
+        "OCCUPATION_TYPE",
+        0.08228615082485376
+      ]
+    ]
+  },
+  "Decision Tree": {
+    "accuracy": 0.6721564590838909,
+    "precision": 0.9161524349734071,
+    "recall": 0.6721564590838909,
+    "f1": 0.7679044041030705,
+    "roc_auc": 0.5433962264150943,
+    "confusion_matrix": [
+      [
+        1275,
+        580
+      ],
+      [
+        57,
+        31
+      ]
+    ],
+    "classification_report": {
+      "Approved": {
+        "precision": 0.9572072072072072,
+        "recall": 0.6873315363881402,
+        "f1-score": 0.8001255098839034,
+        "support": 1855.0
+      },
+      "Rejected": {
+        "precision": 0.05073649754500818,
+        "recall": 0.3522727272727273,
+        "f1-score": 0.08869814020028613,
+        "support": 88.0
+      },
+      "accuracy": 0.6721564590838909,
+      "macro avg": {
+        "precision": 0.5039718523761076,
+        "recall": 0.5198021318304338,
+        "f1-score": 0.44441182504209475,
+        "support": 1943.0
+      },
+      "weighted avg": {
+        "precision": 0.9161524349734071,
+        "recall": 0.6721564590838909,
+        "f1-score": 0.7679044041030705,
+        "support": 1943.0
+      }
+    },
+    "feature_importance": [
+      [
+        "AGE",
+        0.2279685141980435
+      ],
+      [
+        "AMT_INCOME_TOTAL",
+        0.16615142876597389
+      ],
+      [
+        "YEARS_EMPLOYED",
+        0.12733180316626483
+      ],
+      [
+        "OCCUPATION_TYPE",
+        0.09383328914385394
+      ],
+      [
+        "NAME_FAMILY_STATUS",
+        0.08992349217724353
+      ],
+      [
+        "CNT_FAM_MEMBERS",
+        0.07278121159618905
+      ],
+      [
+        "NAME_EDUCATION_TYPE",
+        0.0720384262763331
+      ],
+      [
+        "FLAG_OWN_REALTY",
+        0.053130059875191815
+      ]
+    ]
+  },
+  "Random Forest": {
+    "accuracy": 0.9155944415851776,
+    "precision": 0.9173851232055904,
+    "recall": 0.9155944415851776,
+    "f1": 0.9164867303630473,
+    "roc_auc": 0.5473015192354815,
+    "confusion_matrix": [
+      [
+        1771,
+        84
+      ],
+      [
+        80,
+        8
+      ]
+    ],
+    "classification_report": {
+      "Approved": {
+        "precision": 0.9567801188546732,
+        "recall": 0.9547169811320755,
+        "f1-score": 0.9557474365893146,
+        "support": 1855.0
+      },
+      "Rejected": {
+        "precision": 0.08695652173913043,
+        "recall": 0.09090909090909091,
+        "f1-score": 0.08888888888888889,
+        "support": 88.0
+      },
+      "accuracy": 0.9155944415851776,
+      "macro avg": {
+        "precision": 0.5218683202969018,
+        "recall": 0.5228130360205832,
+        "f1-score": 0.5223181627391017,
+        "support": 1943.0
+      },
+      "weighted avg": {
+        "precision": 0.9173851232055904,
+        "recall": 0.9155944415851776,
+        "f1-score": 0.9164867303630473,
+        "support": 1943.0
+      }
+    },
+    "feature_importance": [
+      [
+        "AMT_INCOME_TOTAL",
+        0.17936541299941922
+      ],
+      [
+        "AGE",
+        0.17763598139388442
+      ],
+      [
+        "YEARS_EMPLOYED",
+        0.13366393372097946
+      ],
+      [
+        "OCCUPATION_TYPE",
+        0.10959234194234539
+      ],
+      [
+        "CNT_FAM_MEMBERS",
+        0.06512395754663099
+      ],
+      [
+        "NAME_FAMILY_STATUS",
+        0.05822891047553199
+      ],
+      [
+        "NAME_INCOME_TYPE",
+        0.051172795322153554
+      ],
+      [
+        "NAME_EDUCATION_TYPE",
+        0.04904809548715715
+      ]
+    ]
+  },
+  "XGBoost": {
+    "accuracy": 0.8986103962943901,
+    "precision": 0.9194670128319512,
+    "recall": 0.8986103962943901,
+    "f1": 0.9086444852919422,
+    "roc_auc": 0.597981499632443,
+    "confusion_matrix": [
+      [
+        1733,
+        122
+      ],
+      [
+        75,
+        13
+      ]
+    ],
+    "classification_report": {
+      "Approved": {
+        "precision": 0.9585176991150443,
+        "recall": 0.9342318059299192,
+        "f1-score": 0.9462189462189462,
+        "support": 1855.0
+      },
+      "Rejected": {
+        "precision": 0.0962962962962963,
+        "recall": 0.14772727272727273,
+        "f1-score": 0.11659192825112108,
+        "support": 88.0
+      },
+      "accuracy": 0.8986103962943901,
+      "macro avg": {
+        "precision": 0.5274069977056702,
+        "recall": 0.540979539328596,
+        "f1-score": 0.5314054372350336,
+        "support": 1943.0
+      },
+      "weighted avg": {
+        "precision": 0.9194670128319512,
+        "recall": 0.8986103962943901,
+        "f1-score": 0.9086444852919422,
+        "support": 1943.0
+      }
+    },
+    "feature_importance": [
+      [
+        "CNT_FAM_MEMBERS",
+        0.09353221207857132
+      ],
+      [
+        "FLAG_OWN_CAR",
+        0.092535600066185
+      ],
+      [
+        "CNT_CHILDREN",
+        0.09087108075618744
+      ],
+      [
+        "NAME_EDUCATION_TYPE",
+        0.09045302122831345
+      ],
+      [
+        "OCCUPATION_TYPE",
+        0.08438664674758911
+      ],
+      [
+        "AGE",
+        0.07789082080125809
+      ],
+      [
+        "YEARS_EMPLOYED",
+        0.07379408180713654
+      ],
+      [
+        "AMT_INCOME_TOTAL",
+        0.07344124466180801
+      ]
+    ]
+  },
+  "_meta": {
+    "feature_order": [
+      "CODE_GENDER",
+      "FLAG_OWN_CAR",
+      "FLAG_OWN_REALTY",
+      "CNT_CHILDREN",
+      "AMT_INCOME_TOTAL",
+      "NAME_INCOME_TYPE",
+      "NAME_EDUCATION_TYPE",
+      "NAME_FAMILY_STATUS",
+      "NAME_HOUSING_TYPE",
+      "OCCUPATION_TYPE",
+      "CNT_FAM_MEMBERS",
+      "AGE",
+      "YEARS_EMPLOYED"
+    ],
+    "test_size": 1943,
+    "train_size": 7770,
+    "total_size": 9713,
+    "approved_count": 9274,
+    "rejected_count": 439
+  }
+}

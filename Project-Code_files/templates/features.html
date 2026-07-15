@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features | CreditAI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="page-wrap">
+
+  {% include '_navbar.html' %}
+
+  <header class="page-hero">
+    <span class="kicker">Features</span>
+    <h1>Everything built for a <span class="gradient-text">trustworthy decision</span></h1>
+    <p>
+      From the model under the hood to the interface you interact with, every part
+      of CreditAI was designed around speed, accuracy and clarity.
+    </p>
+  </header>
+
+  <section class="section reveal">
+    <div class="section-narrow">
+
+      <div class="features-grid-flat">
+        <div class="feature-card glass-card">
+          <div class="feature-icon blue">⚡</div>
+          <h3>Fast &amp; Accurate</h3>
+          <p>Get a real-time prediction in under a second, backed by a model tuned on real repayment history.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon purple">✦</div>
+          <h3>AI Powered</h3>
+          <p>Four classification algorithms were trained and compared; the strongest performer powers every decision.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon orange">🎯</div>
+          <h3>High Accuracy</h3>
+          <p>Rigorous train/test evaluation and model comparison ensures the deployed model is the best available.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon cyan">🔍</div>
+          <h3>Transparent Inputs</h3>
+          <p>No hidden scoring — the exact fields the model uses (income, employment, housing, etc.) are the ones you fill in.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon green">🧠</div>
+          <h3>Top Contributing Factors</h3>
+          <p>Every decision is paired with the specific applicant factors that most influenced it — never a black box.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon red">📄</div>
+          <h3>Downloadable Report</h3>
+          <p>Every approved result comes with a downloadable PDF summary, including confidence and key factors.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon blue">🕘</div>
+          <h3>Searchable Log</h3>
+          <p>Every prediction is logged and can be searched, filtered, sorted and exported to CSV.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon purple">👤</div>
+          <h3>User Friendly</h3>
+          <p>A clear, single-page form with labeled fields means you always know exactly what's being asked and why.</p>
+        </div>
+        <div class="feature-card glass-card">
+          <div class="feature-icon cyan">📱</div>
+          <h3>Works Everywhere</h3>
+          <p>Every page adapts cleanly from desktop to tablet to mobile, with no loss of functionality.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="section-narrow">
+      <div class="cta-banner">
+        <div>
+          <h2>Put these features to work</h2>
+          <p>Start your eligibility check and see the model in action.</p>
+        </div>
+        <a href="{{ url_for('prediction') }}" class="btn btn-primary">Check Eligibility Now →</a>
+      </div>
+    </div>
+  </section>
+
+  {% include '_footer.html' %}
+
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

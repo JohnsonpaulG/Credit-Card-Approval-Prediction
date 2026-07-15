@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <a href="{{ url_for('index') }}" class="brand">
+    <span class="brand-mark">💳</span>
+    <span class="brand-text">
+      <span class="brand-name">Credit<span>AI</span></span>
+      <span class="brand-tag">Smart Banking Solutions</span>
+    </span>
+  </a>
+
+  <div class="nav-links">
+    <a href="{{ url_for('index') }}" class="{{ 'active' if active == 'home' }}">Home</a>
+    <a href="{{ url_for('features') }}" class="{{ 'active' if active == 'features' }}">Features</a>
+    <a href="{{ url_for('how_it_works') }}" class="{{ 'active' if active == 'how_it_works' }}">How It Works</a>
+    <a href="{{ url_for('ml_models') }}" class="{{ 'active' if active == 'ml_models' }}">ML Models</a>
+    <a href="{{ url_for('history') }}" class="{{ 'active' if active == 'history' }}">History</a>
+    <a href="{{ url_for('prediction') }}" class="nav-cta {{ 'active' if active == 'prediction' }}">Check Eligibility</a>
+  </div>
+
+  <div class="nav-right">
+    <span class="badge-ai">✦ AI Powered</span>
+    <button type="button" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+  </div>
+</nav>

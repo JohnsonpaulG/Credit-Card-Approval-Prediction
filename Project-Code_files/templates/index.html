@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CreditAI | Credit Card Approval Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  {% include '_navbar.html' %}
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow">Automated Underwriting Engine</span>
+        <h1>Know your credit card <span>approval odds</span> before you apply.</h1>
+        <p class="lead">
+          CreditAI's underwriting engine reviews the same signals a bank analyst
+          would — income, employment history, housing status and family profile — and
+          returns an instant, machine-learning-backed decision.
+        </p>
+        <div class="hero-actions">
+          <a href="{{ url_for('prediction') }}" class="btn btn-primary">Start Prediction →</a>
+          <a href="{{ url_for('how_it_works') }}" class="btn btn-ghost">See how it works</a>
+        </div>
+      </div>
+
+      <div class="card-stage">
+        <div class="credit-card back">
+          <div class="card-meta"><span>CREDITAI</span><span>PLATINUM</span></div>
+        </div>
+        <div class="credit-card front">
+          <div class="chip"></div>
+          <div class="card-number">•••• &nbsp; •••• &nbsp; •••• &nbsp; 4471</div>
+          <div class="card-meta">
+            <span>Valid Thru 09/30</span>
+            <span>A. APPLICANT</span>
+          </div>
+          <div class="card-brand">creditai</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= Why CreditSense ================= -->
+  <section class="section reveal" id="why-us" style="padding-top:0;">
+    <div class="section-narrow">
+      <div class="section-head">
+        <span class="kicker">Why This Approach</span>
+        <h2>Why Choose CreditSense?</h2>
+        <p>Trained on historical applicant and repayment records, not guesswork.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon blue">✔</div>
+          <h3>AI-Powered Approval Prediction</h3>
+          <p>Four classification algorithms were trained and compared — the strongest performer powers every decision.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon green">✔</div>
+          <h3>Fast Decision Making</h3>
+          <p>Applications are scored and returned in well under a second — no queues, no waiting.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon purple">✔</div>
+          <h3>Secure Data Processing</h3>
+          <p>Applicant data is used only to generate a decision and is never shared with third parties.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon cyan">✔</div>
+          <h3>Explainable Machine Learning</h3>
+          <p>Every result comes with the top contributing factors behind that specific decision — never a black box.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon orange">👤</div>
+          <h3>Personalized Applications</h3>
+          <p>Every prediction is tied to the applicant's name, so results and history stay clear and easy to track.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon gold">✔</div>
+          <h3>Prediction History</h3>
+          <p>Search, filter and export every past prediction, complete with downloadable PDF reports.</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="counter" data-counter="300" data-suffix="K+">0</div>
+          <div class="stat-label">Applications Processed</div>
+        </div>
+        <div class="stat-card">
+          <div class="counter" data-counter="1" data-prefix="&lt;" data-suffix="s">0</div>
+          <div class="stat-label">Prediction Time</div>
+        </div>
+        <div class="stat-card">
+          <div class="counter" data-counter="95" data-suffix="%+">0</div>
+          <div class="stat-label">Model Performance</div>
+        </div>
+        <div class="stat-card">
+          <div class="counter" data-counter="100" data-suffix="%">0</div>
+          <div class="stat-label">Secure Processing</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" style="padding-top:0;">
+    <div class="section-narrow">
+      <div class="cta-banner">
+        <div>
+          <h2>Ready to check your eligibility?</h2>
+          <p>It takes less than a minute to fill in the form and receive your decision.</p>
+        </div>
+        <a href="{{ url_for('prediction') }}" class="btn btn-primary">Start Prediction →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Meet Our Team ================= -->
+  <section class="section reveal" id="team">
+    <div class="section-narrow">
+      <div class="section-head">
+        <span class="kicker">The People Behind CreditAI</span>
+        <h2>Meet Our Team</h2>
+        <p>A small, focused team designed, trained and deployed this end-to-end credit approval pipeline.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-card-body">
+            <div class="team-avatar">GJP</div>
+            <h3>Gandham Johnson Paul</h3>
+            <span class="role">Frontend Developer</span>
+            <div class="roll"></div>
+            <div class="roll">Built the interactive, responsive user interface</div>
+          </div>
+          <div class="team-social">
+            <a href="https://www.linkedin.com/in/johnson-paul-gandham" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/JohnsonpaulG" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-body">
+            <div class="team-avatar">YC</div>
+            <h3>Yagnesh Challa</h3>
+            <span class="role">Backend Developer</span>
+            <div class="roll"></div>
+            <div class="roll">Handles server-side logic, routing and API design</div>
+          </div>
+          <div class="team-social">
+            <a href="https://www.linkedin.com/in/yagnesh-challa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/yagneshchalla" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-body">
+            <div class="team-avatar">SC</div>
+            <h3>Sravanthi Choudaboina</h3>
+            <span class="role">ML Engineer</span>
+            <div class="roll"></div>
+            <div class="roll">Develops and maintains the machine learning models</div>
+          </div>
+          <div class="team-social">
+            <a href="https://www.linkedin.com/in/sravanthi-chodaboina" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/sravanthichodaboina-git" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-body">
+            <div class="team-avatar">ASR</div>
+            <h3>Akkala Shanmukha Reddy</h3>
+            <span class="role">Data Analyst</span>
+            <div class="roll"></div>
+            <div class="roll">Analyzes and interprets complex data to inform business decisions</div>
+          </div>
+          <div class="team-social">
+            <a href="https://www.linkedin.com/in/akkala-shanmukha-reddy-5b727a352" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/Shunmuka-49" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-body">
+            <div class="team-avatar">SA</div>
+            <h3>Shaik Asha</h3>
+            <span class="role">Team Leader</span>
+            <div class="roll"></div>
+            <div class="roll">Done the Documentation and app Testing</div>
+          </div>
+          <div class="team-social">
+            <a href="https://www.linkedin.com/in/shaik-asha" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/JohnsonpaulG/Credit-Card-Approval-Prediction" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include '_footer.html' %}
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
