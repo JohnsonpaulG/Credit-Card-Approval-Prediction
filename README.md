@@ -12,7 +12,7 @@ An intelligent Machine Learning based web application that predicts whether a cr
 
 ## 🎥 Demo Video
 **Google Drive:**  
-(https://drive.google.com/file/d/1LW5DxaJblYKuypiemjEGQyZxnOPrSySV/view?usp=drive_link)
+https://drive.google.com/file/d/1LW5DxaJblYKuypiemjEGQyZxnOPrSySV/view?usp=drive_link
 
 ## 📦 Project ZIP File
 **Google Drive:**  
